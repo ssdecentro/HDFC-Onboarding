@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HDFC Bank Onboarding Demo</title>
+<title>HDFC Securities Onboarding Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap">
@@ -693,13 +693,13 @@ body.devmode .tab{padding:7px 8px 8px}
 </head>
 <body>
 <!-- ============================================================
-  @dev  HDFC Bank · Mobile-first savings account onboarding — interactive prototype
+  @dev  HDFC Securities · Mobile-first demat onboarding — interactive prototype
   Built per Decentro-Demo.MD v1.1. Surfaces: A (presenter shell, zinc) + D (mobile, partner-themed).
   Journey: Mobile+OTP → Customer Data Pull prefill (PAN/DOB/Name) → Detailed PAN
            → Validation + Aadhaar seeding gate → DigiLocker (mobile OTP) documents + OCR name match → Onboarded.
   ALL DATA IS MOCK. Times pinned to Asia/Kolkata. Endpoints badged ILLUSTRATIVE are not confirmed
   against the Decentro API reference and must be checked before this goes to engineering.
-  Partner branding is a demo theme for an HDFC Bank conversation, not supplied brand artwork.
+  Partner branding is a demo theme for an HDFC Securities conversation, not supplied brand artwork.
 ============================================================= -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="decentro-logo" viewBox="112 112 2526 314">
@@ -721,8 +721,8 @@ body.devmode .tab{padding:7px 8px 8px}
     <div class="brand">
       <svg class="logo" viewBox="0 0 2526 314" width="92" height="18" role="img" aria-label="Decentro" style="color:var(--fg)"><use href="#decentro-logo"/></svg>
       <span class="sep"></span>
-      <b>Onboarding for HDFC Bank</b>
-      <span class="tag">Data Pull · PAN · CKYC · V-CIP</span>
+      <b>Onboarding for HDFC Securities</b>
+      <span class="tag">Data Pull · Detailed PAN · DigiLocker</span>
       <span class="proto">Prototype · mock data</span>
     </div>
     <span class="sp"></span>
@@ -859,7 +859,7 @@ body.devmode .tab{padding:7px 8px 8px}
 
 <script>
 /* ============================================================
-   HDFC Bank · mobile-first demat onboarding
+   HDFC Securities · mobile-first demat onboarding
    CONFIG → STATE → MOCK SERVER → FLOWS → RENDER → DEV CONSOLE → RESPONSIVE → TEST HOOK
    ============================================================ */
 const $ = s => document.querySelector(s);
@@ -898,26 +898,26 @@ const svg = (k, px) => '<svg viewBox="0 0 24 24" width="' + (px || 18) + '" heig
    These are demo themes for a client conversation, not supplied brand artwork —
    engineering drops the real theme JSON in at integration. */
 const PRESETS = {
-  hdfc:{ name:'HDFC Bank', partner:'HDFC Bank', unit:'SAVINGS ACCOUNT', mono:'H', font:"'Inter',sans-serif", fontRes:'R.font.inter', header:'Open your account',
+  hdfc:{ name:'HDFC Securities', partner:'HDFC Securities', unit:'DEMAT & TRADING', mono:'H', font:"'Inter',sans-serif", fontRes:'R.font.inter', header:'Open your account',
     light:{primary:'#004C8F',on_primary:'#FFFFFF',background:'#FFFFFF',surface:'#F1F6FB',text_primary:'#0E1621',text_secondary:'#5B6B7C',border:'#DCE6F0',success:'#167A4D',warning:'#A35B00',error:'#C2362C'},
     dark:{primary:'#5EA6E8',on_primary:'#04192E',background:'#0A0F16',surface:'#141B24',text_primary:'#EEF3F8',text_secondary:'#93A4B5',border:'#23303D',success:'#4CC38A',warning:'#E3A33B',error:'#F0706A'},
     btnR:6, btnH:50, inR:6, cardR:10, btnStyle:'FILLED', btnCase:'SENTENCE', inStyle:'OUTLINED',
-    host:{ eyebrow:'Savings account', title:'Open a savings account in minutes', body:'Full KYC, fully digital. No branch visit, no paperwork.', cta:'Open my account' } },
-  hdfcdark:{ name:'HDFC " + DOT + " dark', partner:'HDFC Bank', unit:'SAVINGS ACCOUNT', mono:'H', font:"'Inter',sans-serif", fontRes:'R.font.inter', header:'Open your account', darkDefault:true,
+    host:{ eyebrow:'Demat & trading account', title:'Open your account in under 3 minutes', body:'Aadhaar-backed KYC, fully digital. No paperwork, no branch visit.', cta:'Open my account' } },
+  hdfcdark:{ name:'HDFC \u00b7 dark', partner:'HDFC Securities', unit:'DEMAT & TRADING', mono:'H', font:"'Inter',sans-serif", fontRes:'R.font.inter', header:'Open your account', darkDefault:true,
     light:{primary:'#004C8F',on_primary:'#FFFFFF',background:'#FFFFFF',surface:'#F1F6FB',text_primary:'#0E1621',text_secondary:'#5B6B7C',border:'#DCE6F0',success:'#167A4D',warning:'#A35B00',error:'#C2362C'},
     dark:{primary:'#5EA6E8',on_primary:'#04192E',background:'#0A0F16',surface:'#141B24',text_primary:'#EEF3F8',text_secondary:'#93A4B5',border:'#23303D',success:'#4CC38A',warning:'#E3A33B',error:'#F0706A'},
     btnR:6, btnH:50, inR:6, cardR:10, btnStyle:'FILLED', btnCase:'SENTENCE', inStyle:'OUTLINED',
-    host:{ eyebrow:'Savings account', title:'Open a savings account in minutes', body:'Full KYC, fully digital. No branch visit, no paperwork.', cta:'Open my account' } },
+    host:{ eyebrow:'Demat & trading account', title:'Open your account in under 3 minutes', body:'Aadhaar-backed KYC, fully digital. No paperwork, no branch visit.', cta:'Open my account' } },
   decentro:{ name:'Decentro default', partner:'Your app', unit:'ONBOARDING', mono:'Y', font:"'Inter',sans-serif", fontRes:'R.font.inter', header:'Open your account',
     light:{primary:'#09090B',on_primary:'#FAFAFA',background:'#FFFFFF',surface:'#F4F4F5',text_primary:'#09090B',text_secondary:'#71717A',border:'#E4E4E7',success:'#16A34A',warning:'#D97706',error:'#DC2626'},
     dark:{primary:'#FAFAFA',on_primary:'#09090B',background:'#09090B',surface:'#18181B',text_primary:'#FAFAFA',text_secondary:'#A1A1AA',border:'#27272A',success:'#4ADE80',warning:'#FBBF24',error:'#F87171'},
     btnR:10, btnH:48, inR:10, cardR:12, btnStyle:'FILLED', btnCase:'SENTENCE', inStyle:'OUTLINED',
-    host:{ eyebrow:'Savings account', title:'Open a savings account in minutes', body:'Full KYC, fully digital. No branch visit, no paperwork.', cta:'Open my account' } },
-  bank:{ name:'Neutral bank', partner:'Meridian Bank', unit:'RETAIL BANKING', mono:'M', font:"'DM Sans',sans-serif", fontRes:'R.font.dm_sans', header:'Open your account',
-    light:{primary:'#1A6B54',on_primary:'#FFFFFF',background:'#FFFFFF',surface:'#EFF6F3',text_primary:'#0F1A17',text_secondary:'#56665F',border:'#D8E6E0',success:'#13804B',warning:'#A86400',error:'#C93A2E'},
-    dark:{primary:'#4FBF9B',on_primary:'#042019',background:'#0A1310',surface:'#131E1A',text_primary:'#E8F3EF',text_secondary:'#94A8A1',border:'#223029',success:'#4CC38A',warning:'#E3A33B',error:'#F0706A'},
+    host:{ eyebrow:'Investment account', title:'Open your account in under 3 minutes', body:'Aadhaar-backed KYC, fully digital. No paperwork, no branch visit.', cta:'Open my account' } },
+  broker:{ name:'Neutral broker', partner:'Northline Invest', unit:'BROKING', mono:'N', font:"'DM Sans',sans-serif", fontRes:'R.font.dm_sans', header:'Open your account',
+    light:{primary:'#12507E',on_primary:'#FFFFFF',background:'#FFFFFF',surface:'#EFF4F9',text_primary:'#0F1821',text_secondary:'#566675',border:'#DCE5EE',success:'#13804B',warning:'#A86400',error:'#C93A2E'},
+    dark:{primary:'#5FA8E0',on_primary:'#04192B',background:'#0A1118',surface:'#131C25',text_primary:'#E8F0F7',text_secondary:'#94A6B5',border:'#22303C',success:'#4CC38A',warning:'#E3A33B',error:'#F0706A'},
     btnR:14, btnH:52, inR:14, cardR:16, btnStyle:'FILLED', btnCase:'SENTENCE', inStyle:'FILLED',
-    host:{ eyebrow:'Savings account', title:'Open a savings account in minutes', body:'Full KYC, fully digital. No branch visit, no paperwork.', cta:'Open my account' } }
+    host:{ eyebrow:'Demat & trading account', title:'Open your account in under 3 minutes', body:'Aadhaar-backed KYC, fully digital. No paperwork, no branch visit.', cta:'Open my account' } }
 };
 
 /* ---------- persona (Decentro-Demo.MD §8.6 — reuse, do not invent) ---------- */
@@ -934,8 +934,8 @@ const P = {
   fatherName:'MOHAN LAL SHARMA',
   panCategory:'Individual',
   panUpdated:'09 Feb 2024',
-  customerId:'92844170', account:'50100248811902', ifsc:'HDFC0000123', branch:'Koramangala, Bengaluru',
-  base:'HDFCB240118'
+  clientId:'HSL1048827', dpId:'IN300476', boId:'10488270',
+  base:'HSEC240118'
 };
 const fmtMobile = m => '+91 ' + m.slice(0,5) + ' ' + m.slice(5);
 const maskMobile = m => '+91 ' + m.slice(0,2) + 'XXX XX' + m.slice(-3);
@@ -950,10 +950,10 @@ const JOURNEYS = {
 
 /* ---------- outcomes ---------- */
 const OUT = [
-  { id:'clean',      t:'No CKYC record \u00b7 DigiLocker',  p:'P0',  tone:'ok',
-    n:'The path HDFC will see most often. Everything resolves in the background, CERSAI holds no CKYC record, so the customer lands on the DigiLocker page straight after the email OTP.' },
-  { id:'ckycfound',   t:'Already KYC-registered',           p:'P0',  tone:'ok',
-    n:'CERSAI returns an existing CKYC record, so document collection is skipped entirely. The customer never sees DigiLocker \u2014 straight from the email OTP to signing.' },
+  { id:'clean',      t:'No KRA record \u00b7 DigiLocker',  p:'P0',  tone:'ok',
+    n:'The path HDFC Securities will see most often. Everything resolves in the background, KRA has no record, so the customer lands on the DigiLocker page straight after the email OTP.' },
+  { id:'krafound',   t:'Already KYC-registered',           p:'P0',  tone:'ok',
+    n:'KRA returns an existing record, so document collection is skipped entirely. The customer never sees DigiLocker \u2014 three screens from start to signed.' },
   { id:'pullmiss',   t:'Data Pull finds nothing',          p:'Fallback', tone:'wn',
     n:'The only case where the customer is asked for a PAN. Everything after it still runs in the background.' },
   { id:'namematch',  t:'Name match below threshold',       p:'Common', tone:'wn',
@@ -978,8 +978,8 @@ const OUT = [
 const outById = id => OUT.find(o => o.id === id) || OUT[0];
 
 /* ---------- API catalogue. ownership drives the badge in the console ---------- */
-const HOSTS = { DECENTRO:'in.decentro.tech', DECFIN:'api.decentro.tech', HDFC:'api.hdfcbank.example', GOV:'api.digitallocker.gov.in' };
-const OWN = { decentro:'Decentro', hdfc:'HDFC Bank', gov:'Government (UIDAI \u00b7 ITD \u00b7 MeitY)', customer:'Customer' };
+const HOSTS = { DECENTRO:'in.decentro.tech', DECFIN:'api.decentro.tech', HDFC:'api.hdfcsec.example', GOV:'api.digitallocker.gov.in' };
+const OWN = { decentro:'Decentro', hdfc:'HDFC Securities', gov:'Government (UIDAI \u00b7 ITD \u00b7 MeitY)', customer:'Customer' };
 /* bg:true marks a call the customer never sees a screen for */
 const API = {
   otpGen:  { step:1, m:'POST', set:'HDFC',     own:'hdfc',     path:'/v1/auth/otp/generate',                    ill:true,  label:'Send mobile OTP' },
@@ -989,9 +989,7 @@ const API = {
   pull:    { step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/v2/financial_services/customer/data_pull', ill:false, bg:true, label:'Customer Data Pull' },
   panVal:  { step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/v3/kyc/pan',                              ill:false, bg:true, label:'PAN validation \u00b7 NSDL' },
   panDet:  { step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/v3/kyc/pan/detailed',                     ill:true,  bg:true, label:'Detailed PAN' },
-  ckyc:    { step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/v2/kyc/ckyc/search',                      ill:false, bg:true, label:'CKYC search' },
-  ckycDl:  { step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/v2/kyc/ckyc/download',                    ill:true,  bg:true, label:'CKYC download' },
-
+  kra:     { step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/v2/kyc/kra/search',                       ill:true,  bg:true, label:'KRA KYC status' },
   dlInit:  { step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/kyc/digilocker/documents',                ill:false, label:'DigiLocker \u00b7 start session' },
   dlOtpGen:{ step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/kyc/digilocker/otp/generate',             ill:true,  label:'DigiLocker \u00b7 send OTP' },
   dlOtp:   { step:3, m:'POST', set:'DECENTRO', own:'decentro', path:'/kyc/digilocker/otp/validate',             ill:true,  label:'DigiLocker \u00b7 validate OTP' },
@@ -1005,29 +1003,29 @@ const OPS = [
   { k:'pull',   t:'Customer Data Pull',   a:API.pull,   why:'Resolve the mobile number to a PAN, name and date of birth.' },
   { k:'panVal', t:'PAN validation',       a:API.panVal, why:'Confirm the PAN exists and is active at NSDL.' },
   { k:'panDet', t:'Detailed PAN',         a:API.panDet, why:'Name on PAN, father\u2019s name, category, Aadhaar seeding, name match.' },
-  { k:'ckyc',    t:'CKYC search',          a:API.ckyc,    why:'Does CERSAI already hold a KYC record for this PAN? Decides whether documents are needed at all.' }
+  { k:'kra',    t:'KRA KYC status',       a:API.kra,    why:'Is this PAN already KYC-registered with a KRA? Decides whether documents are needed at all.' }
 ];
 
 /* ---------- screen inventory (drives the flow bar, gallery and spec tab) ---------- */
 const STEPS = [
   { n:1, k:'Mobile',    ids:['mobile','otp','expired'] },
   { n:2, k:'Email',     ids:['email','eotp'] },
-  { n:3, k:'Documents', ids:['bg','manualpan','blocked','ckycok','dlintro','dlauth','dlotp','dlpin','dlfetch','ocr','dlalt','locked','manualreview'] },
+  { n:3, k:'Documents', ids:['bg','manualpan','blocked','kraok','dlintro','dlauth','dlotp','dlpin','dlfetch','ocr','dlalt','locked','manualreview'] },
   { n:4, k:'Account',   ids:['review','done'] }
 ];
 const stepOf = id => (STEPS.find(s => s.ids.includes(id)) || STEPS[0]).n;
 const SCREENS = {
-  host:        { t:'App home',                     g:'Entry',    tone:'',    c:'Card + Button',             purpose:'The partner app before the journey starts. Owned by HDFC Bank; nothing on it is Decentro.' },
+  host:        { t:'App home',                     g:'Entry',    tone:'',    c:'Card + Button',             purpose:'The partner app before the journey starts. Owned by HDFC Securities; nothing on it is Decentro.' },
   mobile:      { t:'1 \u00b7 Mobile number',      g:'Entry',    tone:'',    c:'Field + Checkbox + Button', purpose:'The mobile number and the consent every background pull is made under. Reused for DigiLocker later, so it is never typed twice.' },
   otp:         { t:'1 \u00b7 Mobile OTP',         g:'Entry',    tone:'',    c:'InputGroup (OTP) + Button', purpose:'Prove the customer holds the number.' },
   expired:     { t:'1 \u00b7 OTP expired',        g:'Errors',   tone:'wn',  c:'Empty + Button',            purpose:'The OTP window ran out. Resend issues a fresh reference ID.' },
   email:       { t:'2 \u00b7 Email address',      g:'Entry',    tone:'',    c:'Field + Button',            purpose:'Email for the contract note and statements. The last thing the customer types in the happy path.' },
   eotp:        { t:'2 \u00b7 Email OTP',          g:'Entry',    tone:'',    c:'InputGroup (OTP) + Button', purpose:'Prove the address is live before anything is sent to it.' },
-  bg:          { t:'3 \u00b7 Setting up',         g:'Progress', tone:'',    c:'Spinner + Progress',        purpose:'The only thing the customer sees while Data Pull, PAN validation, Detailed PAN and the CKYC search run. Screen 2 shows what is actually happening.' },
+  bg:          { t:'3 \u00b7 Setting up',         g:'Progress', tone:'',    c:'Spinner + Progress',        purpose:'The only thing the customer sees while Data Pull, PAN validation, Detailed PAN and the KRA check run. Screen 2 shows what is actually happening.' },
   manualpan:   { t:'3 \u00b7 PAN (fallback only)',g:'Entry',    tone:'wn',  c:'Field + Button',            purpose:'Shown only when Data Pull returns no record. The one case where the customer is asked for a PAN.' },
   blocked:     { t:'3 \u00b7 Cannot proceed',     g:'Errors',   tone:'bad', c:'Empty + Alert + Button',    purpose:'A hard stop from ITD surfaced out of the background chain: PAN invalid, inoperative, or not seeded with Aadhaar.' },
-  ckycok:       { t:'3 \u00b7 Already KYC-verified',g:'Results', tone:'ok',  c:'Empty + Card + Button',     purpose:'CERSAI holds a CKYC record, so no documents are collected. DigiLocker is skipped entirely.' },
-  dlintro:     { t:'3 \u00b7 DigiLocker consent', g:'Payment',  tone:'',    c:'Card + Checkbox + Button',  purpose:'The page the customer lands on straight after the email OTP, when CERSAI held no record. What will be fetched and why.' },
+  kraok:       { t:'3 \u00b7 Already KYC-verified',g:'Results', tone:'ok',  c:'Empty + Card + Button',     purpose:'KRA holds a record, so no documents are collected. DigiLocker is skipped entirely.' },
+  dlintro:     { t:'3 \u00b7 DigiLocker consent', g:'Payment',  tone:'',    c:'Card + Checkbox + Button',  purpose:'The page the customer lands on straight after the email OTP. What will be fetched and why.' },
   dlauth:      { t:'3 \u00b7 DigiLocker sign-in',  g:'Payment',  tone:'',    c:'Field + Button',            purpose:'DigiLocker\u2019s own screen. The mobile number arrives pre-filled from the session request, and the customer taps Proceed themselves before any OTP is sent.' },
   dlotp:       { t:'3 \u00b7 DigiLocker OTP',     g:'Payment',  tone:'',    c:'InputGroup (OTP) + Button', purpose:'Government-owned screen. Mobile-based DigiLocker auth on the number from step 1.' },
   dlpin:       { t:'3 \u00b7 DigiLocker PIN',     g:'Payment',  tone:'',    c:'Field + Button',            purpose:'DigiLocker security PIN, where the account has one set.' },
@@ -1181,11 +1179,11 @@ function buildCompare(){
     row('HDFC today', st.today, 'var(--fg-3)') +
     row('This journey', J.steps, 'var(--fg)') +
     '<div class="cmpr" style="grid-template-columns:auto minmax(0,1fr) auto"><span class="lb2">Baseline</span><span></span>' +
-      '<input id="todayIn" class="num" type="number" min="1" max="40" value="' + st.today + '" aria-label="Steps in HDFC\u2019s current flow"></span></div>' +
+      '<input id="todayIn" class="num" type="number" min="1" max="40" value="' + st.today + '" aria-label="Steps in HDFC Securities\u2019 current flow"></div>' +
     '<p class="ft">' + (st.j === 'hdfc'
-      ? 'Mobile, email, DigiLocker, sign. PAN is pulled, validated and enriched in the background, so there is <b>nothing to reconfirm</b> and two fields to type. A CKYC hit removes the document step entirely.'
+      ? 'Mobile, email, DigiLocker, sign. PAN is pulled, validated and enriched in the background, so there is <b>nothing to reconfirm</b> and two fields to type. A KRA hit drops it to three.'
       : 'The same checks, but the customer is shown what was just fetched and asked to confirm it — <b>two extra screens</b> and three fields they can get wrong.') +
-    ' <span style="color:var(--warn)">The baseline is a placeholder — set it to HDFC’s real figure before you present.</span></p>';
+    ' <span style="color:var(--warn)">The baseline is carried over from another account — set it to HDFC Securities’ real figure before you present.</span></p>';
 }
 function buildJourneys(){
   $('#jlist').innerHTML = Object.entries(JOURNEYS).map(([k,j]) =>
@@ -1252,12 +1250,12 @@ const consentBlock = () => ({ consent:true, consent_purpose:'Customer onboarding
 const pullReq   = () => ({ reference_id:ref('PULL'), ...consentBlock(), mobile:st.form.mobile });
 const panValReq = n => ({ reference_id:ref('PANV', n), ...consentBlock(), pan:st.form.pan });
 const panDetReq = n => ({ reference_id:ref('PAND', n), ...consentBlock(), pan:st.form.pan, name:st.form.name, dob:st.form.dob });
-const ckycReq    = () => ({ reference_id:ref('CKYC'), ...consentBlock(), pan:st.form.pan, date_of_birth:st.form.dob });
-const dlInitReq = () => ({ reference_id:ref('DL'), ...consentBlock(), purpose:'ONBOARDING', mobile:st.form.mobile, documents:cfg.docs, redirect_url:'https://onboarding.hdfcbank.example/digilocker/callback' });
+const kraReq    = () => ({ reference_id:ref('KRA'), ...consentBlock(), pan:st.form.pan, date_of_birth:st.form.dob });
+const dlInitReq = () => ({ reference_id:ref('DL'), ...consentBlock(), purpose:'ONBOARDING', mobile:st.form.mobile, documents:cfg.docs, redirect_url:'https://onboarding.hdfcsec.example/digilocker/callback' });
 const ocrReq    = () => ({ reference_id:ref('OCR'), ...consentBlock(), document_type:'AADHAAR', source:'DIGILOCKER', extract:['name','date_of_birth'] });
 const openReq   = () => ({ reference_id:ref('ACC'), client_type:'INDIVIDUAL', pan:st.form.pan, name:(st.pan && st.pan.name) || st.form.name,
-  dob:st.form.dob, mobile:st.form.mobile, email:st.form.email, kyc_mode:st.ckyc && st.ckyc.found ? 'CKYC' : 'DIGILOCKER',
-  kyc_reference_id:st.ckyc && st.ckyc.found ? ref('CKYC') : ref('DL'),
+  dob:st.form.dob, mobile:st.form.mobile, email:st.form.email, kyc_mode:st.kra && st.kra.found ? 'KRA' : 'DIGILOCKER',
+  kyc_reference_id:st.kra && st.kra.found ? ref('KRA') : ref('DL'),
   name_match_score:nameScore(), aadhaar_seeded:!!(st.pan && st.pan.seeded), esign:cfg.esign });
 
 /* ---------- responses ---------- */
@@ -1279,13 +1277,13 @@ function panDetRes(){
     date_of_birth:r.dob, father_name:r.father, category:r.category,
     aadhaar_seeding_status:r.seeded ? 'LINKED' : 'NOT_LINKED', last_updated:r.updated });
 }
-function ckycRes(){
-  const k = st.ckyc;
+function kraRes(){
+  const k = st.kra;
   return k.found
-    ? envl(hex32(), 'SUCCESS', 'ckyc_record_found', { pan:st.form.pan, ckyc_number:k.kin, kyc_status:'RECORD_FOUND', registry:'CERSAI',
+    ? envl(hex32(), 'SUCCESS', 'kyc_record_found', { pan:st.form.pan, kyc_status:'KYC_REGISTERED', kra:k.agency,
         kyc_date:k.date, name:st.pan.name, address_available:true, documents_required:false })
-    : envl(hex32(), 'SUCCESS', 'ckyc_record_not_found', { pan:st.form.pan, ckyc_number:null, kyc_status:'NO_RECORD', registry:'CERSAI', documents_required:true },
-        'CERSAI holds no CKYC record for this PAN');
+    : envl(hex32(), 'SUCCESS', 'kyc_record_not_found', { pan:st.form.pan, kyc_status:'NOT_REGISTERED', kra:null, documents_required:true },
+        'No KRA holds a KYC record for this PAN');
 }
 
 /* ============================================================
@@ -1443,14 +1441,14 @@ async function runOp(k){
     opState('panDet', 'ok', r.name + ' · seeded · ' + nameScore() + '% match');
     return true;
   }
-  if (k === 'ckyc'){
-    const found = st.out === 'ckycfound';
-    st.ckyc = { found, kin:found ? '70042318855921' : null, date:found ? '18 Mar 2023' : null };
-    net({ a:API.ckyc, ref:ref('CKYC'), body:ckycReq(), http:200, res:ckycRes(), ms:msr(550, 1150),
-      txt:found ? '200 · record found · KIN 7004…' : '200 · no record',
-      sum:found ? 'An existing CKYC record means no documents are needed — DigiLocker is skipped entirely'
-                : 'No CKYC record, so the customer is sent to DigiLocker. This is the branch that decides the journey length.' });
-    opState('ckyc', found ? 'ok' : 'miss', found ? 'KIN 70042318855921 · 18 Mar 2023' : 'No record · documents needed');
+  if (k === 'kra'){
+    const found = st.out === 'krafound';
+    st.kra = { found, agency:found ? 'CVL KRA' : null, date:found ? '18 Mar 2023' : null };
+    net({ a:API.kra, ref:ref('KRA'), body:kraReq(), http:200, res:kraRes(), ms:msr(550, 1150),
+      txt:found ? '200 · KYC_REGISTERED · CVL KRA' : '200 · not registered',
+      sum:found ? 'An existing KRA record means no documents are needed — DigiLocker is skipped entirely'
+                : 'No KRA record, so the customer is sent to DigiLocker. This is the branch that decides the journey length.' });
+    opState('kra', found ? 'ok' : 'miss', found ? 'CVL KRA · registered 18 Mar 2023' : 'No record · documents needed');
     return true;
   }
   return true;
@@ -1458,11 +1456,11 @@ async function runOp(k){
 
 /* the one decision the background chain makes */
 function decide(){
-  const found = st.ckyc && st.ckyc.found;
+  const found = st.kra && st.kra.found;
   st.decision = found ? 'skip' : 'digilocker';
-  log('APP', found ? 'CKYC record found → <b>document collection skipped</b>' : 'No CKYC record → <b>DigiLocker</b>');
+  log('APP', found ? 'KRA record found → <b>document collection skipped</b>' : 'No KRA record → <b>DigiLocker</b>');
   renderBackstage();
-  go(found ? 'ckycok' : 'dlintro');
+  go(found ? 'kraok' : 'dlintro');
 }
 
 /* manual PAN is the only fallback that puts a field in front of the customer */
@@ -1479,7 +1477,7 @@ const submitManualPan = guard(async () => {
 });
 
 const toDigiLocker = () => go('dlintro');
-const fromCkycOk = () => go('review');
+const fromKraOk = () => go('review');
 
 /* ---------- step 3 · DigiLocker ---------- */
 const startDl = guard(async () => {
@@ -1607,10 +1605,10 @@ const submitReview = guard(async () => {
   if (cfg.esign){ await splash('e-Sign', 'Signing your account opening form with Aadhaar e-Sign.', 1400); }
   await sl(msr(700, 1300));
   net({ a:API.open, ref:ref('ACC'), body:openReq(), http:201,
-    res:envl(hex32(),'SUCCESS','account_created',{ client_id:P.customerId, dp_id:P.account, bo_id:P.ifsc, status:'ACTIVE', activated_at:istISO() }),
-    ms:msr(650, 1250), txt:'201 · account created', sum:'Client ID ' + P.customerId + ' · DP ' + P.account });
-  cb('onboarding.status_updated', { reference_id:ref('ACC'), status:'COMPLETED', client_id:P.customerId, dp_id:P.account,
-    kyc_mode:st.ckyc && st.ckyc.found ? 'CKYC' : 'DIGILOCKER', name_match_score:nameScore(),
+    res:envl(hex32(),'SUCCESS','account_created',{ client_id:P.clientId, dp_id:P.dpId, bo_id:P.boId, status:'ACTIVE', activated_at:istISO() }),
+    ms:msr(650, 1250), txt:'201 · account created', sum:'Client ID ' + P.clientId + ' · DP ' + P.dpId });
+  cb('onboarding.status_updated', { reference_id:ref('ACC'), status:'COMPLETED', client_id:P.clientId, dp_id:P.dpId,
+    kyc_mode:st.kra && st.kra.found ? 'KRA' : 'DIGILOCKER', name_match_score:nameScore(),
     screens_shown:st.seen.size, timestamp:istISO() });
   st.busy = false; st.finishedAt = Date.now(); st.ended = true;
   go('done');
@@ -1653,7 +1651,7 @@ function render(){
   paintBars();
 }
 
-/* ---------- partner app (owned by HDFC, no Decentro chrome) ---------- */
+/* ---------- partner app (owned by HDFC Securities, no Decentro chrome) ---------- */
 function renderHost(T){
   const h = T.pr.host;
   $('#host').innerHTML =
@@ -1678,7 +1676,7 @@ function renderHost(T){
 }
 
 /* ---------- journey chrome ---------- */
-const BACKABLE = { mobile:null, otp:'mobile', email:null, eotp:'email', bg:null, manualpan:null, dlintro:null, dlauth:'dlintro', dlotp:'dlauth', dlpin:'dlotp', ckycok:null, review:null };
+const BACKABLE = { mobile:null, otp:'mobile', email:null, eotp:'email', bg:null, manualpan:null, dlintro:null, dlauth:'dlintro', dlotp:'dlauth', dlpin:'dlotp', kraok:null, review:null };
 function renderHead(T){
   const sc = SCREENS[st.screen] || {};
   const gov = ['dlauth','dlotp','dlpin'].includes(st.screen);
@@ -1785,13 +1783,13 @@ function screenBody(T){
     const why = st.blockReason;
     const M = {
       notseeded:{ t:'Your PAN is not linked to Aadhaar', d:'SEBI needs a PAN seeded with Aadhaar before a demat account can be opened. Link it on the Income Tax portal and come back — your progress is saved.',
-        rows:[['bad','PAN–Aadhaar seeding','ITD reports NOT_LINKED','Blocked'],['ok','PAN validity','Valid and active','Passed'],['nr','CKYC and documents','Not attempted','Skipped']],
+        rows:[['bad','PAN–Aadhaar seeding','ITD reports NOT_LINKED','Blocked'],['ok','PAN validity','Valid and active','Passed'],['nr','KRA and documents','Not attempted','Skipped']],
         cta:'How to link PAN with Aadhaar', foot:'Caught in the background chain before the customer reached the DigiLocker page — one of the few times the silent path has to surface something.' },
       inoperative:{ t:'Your PAN is inoperative', d:'The Income Tax Department has marked this PAN inoperative, usually for non-linkage with Aadhaar. It has to be made operative before the account can open.',
-        rows:[['bad','PAN status','ITD reports INOPERATIVE','Blocked'],['bad','PAN–Aadhaar seeding','NOT_LINKED','Blocked'],['nr','CKYC and documents','Not attempted','Skipped']],
+        rows:[['bad','PAN status','ITD reports INOPERATIVE','Blocked'],['bad','PAN–Aadhaar seeding','NOT_LINKED','Blocked'],['nr','KRA and documents','Not attempted','Skipped']],
         cta:'How to reactivate my PAN', foot:'Returned in <code>status</code> on the PAN validation response, before any document work.' },
       invalidpan:{ t:'We could not verify that PAN', d:'The Income Tax Department has no record of this number. Check each character and try again — a single wrong letter is the usual cause.',
-        rows:[['bad','PAN validation','NSDL returned NOT_FOUND','Failed'],['nr','Detailed PAN','Not checked','Skipped'],['nr','CKYC and documents','Not attempted','Skipped']],
+        rows:[['bad','PAN validation','NSDL returned NOT_FOUND','Failed'],['nr','Detailed PAN','Not checked','Skipped'],['nr','KRA and documents','Not attempted','Skipped']],
         cta:'Enter my PAN again', foot:'A retry re-runs the chain from PAN validation with the next reference ID; the failed one stays in the audit trail.' }
     }[why];
     return '<div class="st" style="--tone:var(--s-err)">' +
@@ -1804,19 +1802,19 @@ function screenBody(T){
     '<div class="s-act">' + btn('goFix', M.cta) + btn('goRestart', 'Start over', { sec:true }) + '</div>';
   },
 
-  ckycok: () =>
+  kraok: () =>
     '<div class="st" style="--tone:var(--s-ok)">' +
       '<span class="st-em pop">' + svg('shield',28) + '</span>' +
       '<span class="st-badge"><i></i>KYC on file</span>' +
       '<h2 class="st-t">You are already KYC-verified</h2>' +
-      '<p class="st-d">The central KYC registry already holds your record, so there are no documents to collect.</p>' +
+      '<p class="st-d">' + esc(st.kra && st.kra.agency || 'A KRA') + ' already holds your KYC record, so there are no documents to collect.</p>' +
       '<div class="st-card"><div class="st-h">What this skips</div><ul class="st-rows">' +
-        stRow('ok', 'CKYC record', 'KIN ' + (st.ckyc && st.ckyc.kin || '') + ' · ' + (st.ckyc && st.ckyc.date || ''), 'Found') +
+        stRow('ok', 'KRA record', (st.kra && st.kra.agency || '') + ' · registered ' + (st.kra && st.kra.date || ''), 'Found') +
         stRow('nr', 'DigiLocker', 'Not needed', 'Skipped') +
         stRow('nr', 'Document upload', 'Not needed', 'Skipped') +
-      '</ul><div class="st-foot">' + svg('info',15) + '<span>The CKYC search is one call in the background chain. When it hits, document collection disappears entirely.</span></div></div>' +
+      '</ul><div class="st-foot">' + svg('info',15) + '<span>The KRA check is one call in the background chain. When it hits, the journey is three screens end to end.</span></div></div>' +
     '</div>' +
-    '<div class="s-act">' + btn('goCkyc', 'Continue') + '</div>',
+    '<div class="s-act">' + btn('goKra', 'Continue') + '</div>',
 
   dlintro: () =>
     '<h2 class="s-title">Fetch your documents from DigiLocker</h2>' +
@@ -1933,7 +1931,7 @@ function screenBody(T){
 
   review: () => {
     const sc = nameScore(), via = st.ocrScore !== null && st.ocrScore !== undefined;
-    const kra = st.ckyc && st.ckyc.found;
+    const kra = st.kra && st.kra.found;
     return '<h2 class="s-title">Check and sign</h2>' +
     '<p class="s-sub">The first time we show you any of this — because you are signing it, not correcting it.</p>' +
     '<div class="rec"' + dc('Card (record)') + '>' +
@@ -1947,7 +1945,7 @@ function screenBody(T){
         (kra ? '' : recRow('Aadhaar', esc(P.aadhaarMasked))) +
         recRow('Aadhaar linkage', svg('check',13) + ' Linked', 'ok') +
         recRow('Name match', (via ? st.ocrScore : sc) + '% · ' + (via ? 'from Aadhaar' : 'against PAN'), 'ok') +
-        recRow('KYC mode', kra ? ('CKYC · KIN ' + st.ckyc.kin) : 'DigiLocker · issued documents') +
+        recRow('KYC mode', kra ? (st.kra.agency + ' · existing record') : 'DigiLocker · issued documents') +
       '</div>' +
     '</div>' +
     note('', 'Everything above was fetched and verified while you waited. You typed ' + (st.prefilled.pan ? 'two things' : 'three things') + ': your mobile number' + (st.prefilled.pan ? ' and your email' : ', your email and your PAN') + '.') +
@@ -1965,12 +1963,12 @@ function screenBody(T){
       '<p class="st-d">You can fund it and place your first trade right away.</p>' +
       '<div class="st-card"><div class="st-h">Your account</div>' +
         '<div class="st-kvs">' +
-          '<div class="st-kv"><span>Client ID</span><b class="mono">' + P.customerId + '</b></div>' +
-          '<div class="st-kv"><span>DP ID</span><b class="mono">' + P.account + '</b></div>' +
-          '<div class="st-kv"><span>BO ID</span><b class="mono">' + P.ifsc + '</b></div>' +
+          '<div class="st-kv"><span>Client ID</span><b class="mono">' + P.clientId + '</b></div>' +
+          '<div class="st-kv"><span>DP ID</span><b class="mono">' + P.dpId + '</b></div>' +
+          '<div class="st-kv"><span>BO ID</span><b class="mono">' + P.boId + '</b></div>' +
           '<div class="st-kv"><span>Opened</span><b>' + esc(IST()) + '</b></div>' +
         '</div>' +
-        '<div class="st-foot">' + svg('shield',15) + '<span>KYC held against <code>' + esc(st.ckyc && st.ckyc.found ? ref('CKYC') : ref('DL')) + '</code> · ' + (st.ckyc && st.ckyc.found ? 'existing CKYC record' : 'issued Aadhaar and PAN, signature verified') + '.</span></div>' +
+        '<div class="st-foot">' + svg('shield',15) + '<span>KYC held against <code>' + esc(st.kra && st.kra.found ? ref('KRA') : ref('DL')) + '</code> · ' + (st.kra && st.kra.found ? 'existing ' + esc(st.kra.agency) + ' record' : 'issued Aadhaar and PAN, signature verified') + '.</span></div>' +
       '</div>' +
       '<div class="save"' + dc('Card (comparison)') + '><div class="sh">What the customer actually did</div>' +
         bar('Steps before', J.today, 'var(--s-tx2)') +
@@ -1989,7 +1987,7 @@ function screenBody(T){
      caret and the soft keyboard stay put; validation renders on submit. ---------- */
 const ACT = {
   go1:submitMobile, go2:submitOtp, goEm1:submitEmail, goEm2:submitEotp, goPan:submitManualPan,
-  goCkyc:fromCkycOk, go5:startDl, go6:submitDlOtp, go7:() => submitDlPin(), go8:submitReview,
+  goKra:fromKraOk, go5:startDl, go6:submitDlOtp, go7:() => submitDlPin(), go8:submitReview,
   goResend:resendOtp, goEditMobile:() => { clearTimers(); st.otp = ''; st.errs = {}; go('mobile'); },
   goDecline:declineDl, goDlGo:proceedDl, goDlNo:() => { log('USER', 'Cancelled on the DigiLocker screen'); cancelDl(); }, goRetryDl:() => { st.out = 'clean'; buildOutcomes(); st.dlConsent = true; go('dlintro'); startDl(); },
   goUpload:() => toast('Manual upload is out of scope for this prototype'),
@@ -2092,13 +2090,13 @@ function renderBackstage(){
     '</div>';
   };
   let dec = '';
-  if (st.decision === 'skip') dec = '<div class="bs-dec skip"><b>CKYC record found — documents skipped</b>The customer goes straight to signing. DigiLocker is never shown.</div>';
-  else if (st.decision === 'digilocker') dec = '<div class="bs-dec go"><b>No CKYC record — DigiLocker</b>Document collection is the only reason this page appears at all.</div>';
+  if (st.decision === 'skip') dec = '<div class="bs-dec skip"><b>KRA record found — documents skipped</b>The customer goes straight to signing. DigiLocker is never shown.</div>';
+  else if (st.decision === 'digilocker') dec = '<div class="bs-dec go"><b>No KRA record — DigiLocker</b>Document collection is the only reason this page appears at all.</div>';
   else if (st.blockReason) dec = '<div class="bs-dec"><b>Chain stopped</b>A check failed, so the customer had to be told. This is the only reason the silent path surfaces.</div>';
 
   const bgCalls = st.net.filter(e => e.bg).length;
   b.innerHTML =
-    '<p class="bs-sub">HDFC calls these while the customer waits on one loader. Nothing here is put in front of them — if Data Pull and NSDL already agree, there is nothing to reconfirm.</p>' +
+    '<p class="bs-sub">HDFC Securities calls these while the customer waits on one loader. Nothing here is put in front of them — if Data Pull and NSDL already agree, there is nothing to reconfirm.</p>' +
     list.map(row).join('') + dec +
     '<div class="bs-foot"><span>Background calls <b>' + bgCalls + '</b></span><span>Screens it saved <b>' + (st.decision === 'skip' ? 4 : 2) + '</b></span><span>Fields not asked for <b>' + (st.prefilled.pan ? 3 : 0) + '</b></span></div>';
 }
@@ -2130,10 +2128,10 @@ const CAPTION = {
   bg:'One loader on the left. Four calls on the right. This is the whole argument — watch screen 2.',
   manualpan:'The only screen where a PAN is asked for, and only because Data Pull came back empty.',
   blocked:'A hard stop out of the background chain. Caught before the customer touched DigiLocker.',
-  ckycok:'CERSAI already holds the record, so document collection is skipped entirely.',
-  dlintro:'Shown only because CERSAI held no record — and the customer has confirmed nothing to get here.',
+  kraok:'KRA already holds the record, so document collection is skipped entirely. Three screens, start to signed.',
+  dlintro:'The page the customer lands on straight after the email OTP — and they have confirmed nothing to get here.',
   dlauth:'DigiLocker\u2019s own screen, with the number already filled in. The customer taps Proceed \u2014 nothing is sent before they do.',
-  dlotp:'DigiLocker’s own screen, on the number from step 1. HDFC never touches the credentials — the differentiator against running your own DigiLocker keys.',
+  dlotp:'DigiLocker’s own screen, on the number from step 1. HDFC Securities never touches the credentials — the differentiator against running your own DigiLocker keys.',
   dlpin:'The DigiLocker PIN step, on for accounts that have one set.',
   dlfetch:'Issued XML with UIDAI’s signature, not a photo of a card.',
   ocr:'Name match was below threshold, so OCR reads it off the issued Aadhaar — silently. The customer is never asked to retype a name.',
@@ -2258,7 +2256,7 @@ function renderState(){
       tr('aadhaar_seeding_status', r ? '<span class="pill ' + (r.seeded ? 'ok' : 'bad') + '">' + (r.seeded ? 'LINKED' : 'NOT_LINKED') + '</span>' : '—') +
       tr('name_match (input vs PAN)', r && r.name ? nameScore() + '% · threshold ' + cfg.threshold + '%' : '—') +
       tr('name_match (Aadhaar OCR)', st.ocrScore !== null && st.ocrScore !== undefined ? st.ocrScore + '%' : '<span class="pill">not needed</span>') +
-      tr('ckyc_status', st.ckyc ? '<span class="pill ' + (st.ckyc.found ? 'ok' : 'wn') + '">' + (st.ckyc.found ? 'RECORD_FOUND · KIN ' + st.ckyc.kin : 'NO_RECORD') + '</span>' : '—') +
+      tr('kra_status', st.kra ? '<span class="pill ' + (st.kra.found ? 'ok' : 'wn') + '">' + (st.kra.found ? 'KYC_REGISTERED · ' + st.kra.agency : 'NOT_REGISTERED') + '</span>' : '—') +
       tr('decision', st.decision ? '<span class="pill ' + (st.decision === 'skip' ? 'ok' : '') + '">' + (st.decision === 'skip' ? 'documents skipped' : 'DigiLocker') + '</span>' : '—') +
       tr('documents', Object.entries(st.docs).filter(([k]) => cfg.docs.includes(k)).map(([k,v]) => '<span class="pill ' + (v === 'ok' ? 'ok' : '') + '">' + k + ' ' + v + '</span>').join(' ')) +
     '</table>' +
@@ -2268,7 +2266,7 @@ function renderState(){
       tr('background_calls', String(st.net.filter(e => e.bg).length) + ' with no screen of their own') +
     '</table>' +
     '<div class="lbl">Reference IDs issued</div><table>' +
-      ['OTP','EOTP','PULL','PANV','PAND','CKYC','DL','OCR','ACC'].map(t => tr(t, '<code>' + ref(t) + '</code>' + (st.net.some(e => e.ref === ref(t)) ? ' <span class="pill ok">used</span>' : ' <span class="pill">reserved</span>'))).join('') +
+      ['OTP','EOTP','PULL','PANV','PAND','KRA','DL','OCR','ACC'].map(t => tr(t, '<code>' + ref(t) + '</code>' + (st.net.some(e => e.ref === ref(t)) ? ' <span class="pill ok">used</span>' : ' <span class="pill">reserved</span>'))).join('') +
     '</table>' +
     '<div class="lbl">Counters</div><table>' +
       tr('api_calls', st.net.length + ' (' + st.net.filter(e => e.own === 'decentro').length + ' billable to Decentro)') +
@@ -2302,7 +2300,7 @@ function preview(id){
   st.otp = '418302'; st.emOtp = '730164'; st.dlOtp = '902517'; st.form.dlMobile = P.mobile;
   st.otpLeft = cfg.otpWindow; st.emLeft = cfg.otpWindow; st.dlLeft = cfg.otpWindow;
   st.pan = panRecord();
-  st.ckyc = { found:st.out === 'ckycfound' || id === 'ckycok', kin:'70042318855921', date:'18 Mar 2023' };
+  st.kra = { found:st.out === 'krafound' || id === 'kraok', agency:'CVL KRA', date:'18 Mar 2023' };
   if (['manualreview','ocr'].includes(id)){ st.pan = { ...panRecord(), name:'R K SHARMA' }; st.ocrName = P.name.toUpperCase(); st.ocrScore = sim(P.name, P.name.toUpperCase()); st.reviewRef = ref('REV'); }
   else st.ocrScore = null;
   if (id === 'blocked') st.blockReason = ['notseeded','inoperative','invalidpan'].includes(st.out) ? st.out : 'notseeded';
@@ -2310,21 +2308,21 @@ function preview(id){
   else st.blockReason = null;
   st.docs = { AADHAAR:'ok', PAN:'ok' };
   /* fill the backstage so screen 2 reads correctly for the previewed screen */
-  const done = { pull:'ok', panVal:'ok', panDet:'ok', ckyc:st.ckyc.found ? 'ok' : 'miss' };
+  const done = { pull:'ok', panVal:'ok', panDet:'ok', kra:st.kra.found ? 'ok' : 'miss' };
   st.ops = {};
   if (!['host','mobile','otp','expired','email','eotp'].includes(id)){
     let t = 0.8;
     OPS.forEach(o => { st.ops[o.k] = { s:done[o.k], at:(t += 0.9),
       detail:{ pull:P.pan + ' · ' + P.name, panVal:'VALID', panDet:st.pan.name + ' · seeded · ' + nameScore() + '% match',
-               ckyc:st.ckyc.found ? 'KIN 70042318855921 · 18 Mar 2023' : 'No record · documents needed' }[o.k] }; });
-    if (id === 'manualpan'){ st.ops.pull = { s:'miss', at:0.9, detail:'No record for this mobile number' }; delete st.ops.panVal; delete st.ops.panDet; delete st.ops.ckyc; }
+               kra:st.kra.found ? 'CVL KRA · registered 18 Mar 2023' : 'No record · documents needed' }[o.k] }; });
+    if (id === 'manualpan'){ st.ops.pull = { s:'miss', at:0.9, detail:'No record for this mobile number' }; delete st.ops.panVal; delete st.ops.panDet; delete st.ops.kra; }
     if (id === 'blocked'){ const stop = { notseeded:'panDet', inoperative:'panVal', invalidpan:'panVal' }[st.blockReason];
       st.ops[stop] = { s:'fail', at:2.6, detail:{ notseeded:'Aadhaar NOT_LINKED', inoperative:'INOPERATIVE', invalidpan:'NOT_FOUND at NSDL' }[st.blockReason] };
-      if (stop === 'panVal'){ delete st.ops.panDet; delete st.ops.ckyc; } else delete st.ops.ckyc; }
+      if (stop === 'panVal'){ delete st.ops.panDet; delete st.ops.kra; } else delete st.ops.kra; }
     if (['ocr','manualreview'].includes(id)) st.ops.ocr = { s:id === 'ocr' ? 'ok' : 'fail', at:6.2, detail:st.ocrName + ' · ' + st.ocrScore + '%' };
   }
   st.decision = ['host','mobile','otp','expired','email','eotp','bg','manualpan'].includes(id) ? null
-    : id === 'blocked' ? null : (st.ckyc.found ? 'skip' : 'digilocker');
+    : id === 'blocked' ? null : (st.kra.found ? 'skip' : 'digilocker');
   st.seen = new Set(['mobile','otp','email','eotp']); st.seen.add(id);
   st.startedAt = Date.now() - 96000; st.finishedAt = Date.now(); st.ended = id === 'done';
   st.sdkOpen = id !== 'host'; st.busy = false; st.errs = {};
@@ -2358,14 +2356,14 @@ function renderCode(){
 
 /* ---------- Spec ---------- */
 const ELEMENTS = {
-  mobile:[['Mobile field','10 digits, numeric keyboard, 16px so iOS does not zoom. Validates on blur and on submit.'],['Consent checkbox','One consent covering Data Pull, PAN, CKYC and DigiLocker. Its timestamp is sent with every background call.'],['Send OTP','Disabled while the call is in flight; label swaps to a spinner.']],
+  mobile:[['Mobile field','10 digits, numeric keyboard, 16px so iOS does not zoom. Validates on blur and on submit.'],['Consent checkbox','One consent covering Data Pull, PAN, KRA and DigiLocker. Its timestamp is sent with every background call.'],['Send OTP','Disabled while the call is in flight; label swaps to a spinner.']],
   otp:[['OTP boxes','Six single-character inputs, autocomplete="one-time-code", auto-advance and backspace-retreat.'],['Auto-fill chip','Shown when the SMS Retriever API filled the code. Android only.'],['Timer','Counts down the configured window; Resend enables at zero and issues a new reference ID.']],
   email:[['Email field','type="email", validated on submit. The last thing the customer types in the happy path.']],
   eotp:[['OTP boxes','Same component as the mobile OTP, different reference ID namespace.']],
   bg:[['Loader','The only customer-facing artefact of four API calls. Deliberately uninformative — there is nothing for them to do.'],['Minimum dwell','Keep it on screen long enough to read, even if the chain returns faster.']],
   manualpan:[['PAN field','Uppercased as typed, autocapitalize="characters", 10-char cap, ITD format validation.'],['Fallback only','Reached only on no_record_found. Never shown when Data Pull succeeds — that is the whole point.']],
   blocked:[['Checks list','Names which background check failed and which were skipped.'],['Remedy CTA','Deep links to the ITD action, or back to PAN entry. Never a dead end.']],
-  ckycok:[['Skip card','States plainly what was not needed. Reinforces that the CKYC call paid for itself.']],
+  kraok:[['Skip card','States plainly what was not needed. Reinforces that the KRA call paid for itself.']],
   dlintro:[['Document rows','Named documents only — whatever is in the documents array of the session request.'],['Consent checkbox','Separate from the step 1 consent; DigiLocker requires its own.']],
   dlauth:[['Pre-filled mobile','Passed in the session request, so the customer never retypes the number they verified in step 1.'],['Proceed button','The customer acts before any OTP leaves DigiLocker. Nothing is auto-submitted on their behalf.'],['Cancel','DigiLocker\u2019s own exit. Returns consent_declined and the journey offers manual upload.']],
   dlotp:[['Government chrome','Header switches to DigiLocker and the "Powered by Decentro" footer is hidden: this is not our surface.']],
@@ -2401,10 +2399,10 @@ function renderSpec(){
 function handoff(){
   const used = st.net.map(e => ({ method:e.method, host:e.host, path:e.path, owner:OWN[e.own], step:e.step, illustrative:!!e.ill, http:e.http }));
   return {
-    product:'HDFC Bank · mobile demat onboarding',
+    product:'HDFC Securities · mobile demat onboarding',
     version:new Date().toISOString().slice(0,10),
     built_from:['Decentro-Demo.MD v1.1'],
-    source_docs:['[PLACEHOLDER] HDFC Bank onboarding requirement — attach the PRD or call notes before this ticket is picked up'],
+    source_docs:['[PLACEHOLDER] HDFC Securities onboarding requirement — attach the PRD or call notes before this ticket is picked up'],
     journeys:Object.entries(JOURNEYS).map(([k,j]) => ({ id:k, name:j.name, steps:j.steps, steps_today:j.today })),
     policy:{ show_confirmation_screen:false, name_match_threshold:cfg.threshold, ocr_fallback:cfg.ocr, block_if_aadhaar_not_seeded:true,
       skip_documents_if_kra_registered:true, digilocker_pin_step:cfg.dlPin, otp_validity_seconds:cfg.otpWindow, documents:cfg.docs, esign:cfg.esign },
@@ -2421,14 +2419,13 @@ function handoff(){
     calls_in_this_run:used,
     open_questions:[
       'Confirm the split between PAN validation and Detailed PAN: one call or two, and the exact path for the detailed variant.',
-      'Confirm the CKYC search and download endpoints against CERSAI, and whether download is a separate call.',
-
+      'Confirm the KRA search endpoint, which KRAs are covered (CVL, NDML, DOTEX, CAMS, Karvy) and the response envelope.',
       'Confirm /v3/kyc/pan returns aadhaar_seeding_status and name_match, and the exact key names.',
       'Confirm the DigiLocker endpoints: session create, OTP validate and document fetch paths and envelopes.',
       'Confirm whether OCR is a separate call or part of the DigiLocker document response.',
-      'HDFC owns mobile OTP, email OTP and account creation in this build — confirm that split.',
-      '[PLACEHOLDER] Confirm HDFC’s current step count for the comparison baseline — 12 is a stand-in, not a measured figure.',
-      'Confirm the name-match algorithm and the threshold HDFC wants in production (85% assumed).',
+      'HDFC Securities owns mobile OTP, email OTP and account creation in this build — confirm that split.',
+      '[PLACEHOLDER] Confirm HDFC Securities’ current step count for the comparison baseline — 12 is carried over from another account, not a measured figure.',
+      'Confirm the name-match algorithm and the threshold HDFC Securities wants in production (85% assumed).',
       'Compliance: confirm that showing the fetched PAN only on the signing screen satisfies the account-opening record requirement, since the customer confirms nothing mid-journey.'
     ]
   };
@@ -2477,14 +2474,13 @@ const MOCKS = [
   { g:'Background · Customer Data Pull', a:API.pull, k:'pull', opts:[['found','Record found · PAN, name, DOB'],['empty','no_record_found → customer types PAN']] },
   { g:'Background · PAN validation', a:API.panVal, k:'panVal', opts:[['valid','VALID'],['inoperative','INOPERATIVE'],['notfound','pan_not_found']] },
   { g:'Background · Detailed PAN', a:API.panDet, k:'panDet', opts:[['seeded','LINKED · name matches'],['partial','LINKED · name below threshold'],['notseeded','NOT_LINKED']] },
-  { g:'Background · CKYC search', a:API.ckyc, k:'ckyc', opts:[['none','No record → DigiLocker'],['found','Record found → documents skipped']] },
-
+  { g:'Background · KRA KYC status', a:API.kra, k:'kra', opts:[['none','Not registered → DigiLocker'],['found','KYC_REGISTERED → documents skipped']] },
   { g:'Step 3 · DigiLocker', a:API.dlInit, k:'dl', opts:[['ok','Session created'],['otpfail','OTP fails every attempt'],['deny','Consent declined'],['down','503 from the gateway']] },
   { g:'Background · OCR', a:API.ocr, k:'ocr', opts:[['match','Name extracted and matched'],['nomatch','Still below threshold → review']] },
   { g:'Step 4 · Account open', a:API.open, k:'open', opts:[['ok','201 created']] }
 ];
 const OUT_FOR_MOCK = { 'otpGen:expire':'otpexpired', 'pull:empty':'pullmiss', 'panVal:inoperative':'inoperative', 'panVal:notfound':'invalidpan',
-  'panDet:partial':'namematch', 'panDet:notseeded':'notseeded', 'ckyc:found':'ckycfound', 'dl:otpfail':'dlotpfail', 'dl:deny':'dldeny', 'dl:down':'dldown', 'ocr:nomatch':'ocrfail' };
+  'panDet:partial':'namematch', 'panDet:notseeded':'notseeded', 'kra:found':'krafound', 'dl:otpfail':'dlotpfail', 'dl:deny':'dldeny', 'dl:down':'dldown', 'ocr:nomatch':'ocrfail' };
 function reqText(){
   return JSON.stringify({ reference_id:P.base,
     consumer:{ urn:st.urn.decentro, environment:st.env },
